@@ -56,9 +56,9 @@ public class Network {
         }
 
         if(broken)
-            System.out.println("Network Depends on Copper Wire");
+            System.out.println("Network is not copper-only connected");
         else
-            System.out.println("Network does not depend on Copper Wire");
+            System.out.println("Network is copper-only connected");
     }
 
     public void maxData(int v1, int v2) {
