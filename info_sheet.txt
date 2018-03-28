@@ -6,35 +6,32 @@ You must submit an information sheet with every assignment.  Also be sure
 to submit all materials following the procedures described on the
 submission procedures page.
 
-Name:  
+Name:  Eric Hunzeker
 
-Lecture section:  
+Lecture section:  TH 11AM-12:15PM @ VICTO 122 Lecture (W)
 
-Recitation day and time:  
+Recitation day and time:  Friday 10 AM
 
-Assignment #:  
+Assignment #:  4
 
-Program due date:  
+Program due date:  4 April 2018  
 
 Handed in date:  
 
 Source code file name(s):
 
-
-
-
-
+Bag.javaCC.javaDijkstraSP.javaEdge.javaEdgeWeightedGraph.javaFlowEdge.javaFlowNetwork.javaFordFulkerson.javaIn.javaIndexMinPQ.javaKruskalMST.javaMinPQ.javaNetwork.javaNetworkAnalysis.javaQueue.java
 
 
 Other file name(s) (if relevant):
 
+network_data1.txtnetwork_data2.txt
 
 
 
 
 
-
-Does your program run without error?:
+Does your program run without error?: Yes
 
 If not, what is/are the error(s) and which parts of your program run
 correctly?:
@@ -47,8 +44,10 @@ correctly?:
 
 Additional comments to the grader:
 
+Make sure there's no empty line at the end of network_data#.txt files.
 
 
+If you get an error along the lines of "Exception in thread "main" java.util.NoSuchElementException: attemps to read an 'int' value from input stream, but there are no more tokens available", try deleting the empty line at the end of the network_data#.txt files.
 
 
 
