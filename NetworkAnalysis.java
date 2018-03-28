@@ -20,8 +20,7 @@ public class NetworkAnalysis
 
             String input = scanner.nextLine();
 
-            if (input.equalsIgnoreCase("1"))
-            {
+            if (input.equalsIgnoreCase("1")) {
                 System.out.println("Input Vertex 1");
                 int v1 = scanner.nextInt();
                 scanner.nextLine();
@@ -34,12 +33,10 @@ public class NetworkAnalysis
             }
 
             else if (input.equalsIgnoreCase("2"))
-            {
                 network.isCopper();
-            }
 
-            else if (input.equalsIgnoreCase("3"))
-            {
+
+            else if (input.equalsIgnoreCase("3")) {
                 System.out.println("Input Vertex 1");
                 int v1 = scanner.nextInt();
                 scanner.nextLine();
@@ -52,25 +49,18 @@ public class NetworkAnalysis
             }
 
             else if (input.equalsIgnoreCase("4"))
-            {
                 network.lowestLatency();
-            }
 
             else if (input.equalsIgnoreCase("5"))
-            {
                 network.connectivity();
-            }
 
-            else if (input.equalsIgnoreCase("6"))
-            {
+            else if (input.equalsIgnoreCase("6")) {
                 run = false;
                 System.out.println("Goodbye");
             }
 
             else
-            {
                 System.out.println("Invalid Input");
-            }
 
             System.out.println();
         }
