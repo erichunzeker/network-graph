@@ -1,7 +1,6 @@
 import java.util.Iterator;
 
-public class Network
-{
+public class Network {
     EdgeWeightedGraph weightedGraph;
 
     public Network(String filename) {
@@ -92,7 +91,6 @@ public class Network
         Iterator<Edge> edgeIterator = edges.iterator();
 
         System.out.println("Lowest Average Latency Spanning Tree: ");
-
         printPath(edgeIterator);
     }
 
@@ -120,7 +118,6 @@ public class Network
                             broken = true;
                     }
                 }
-
             }
         }
 
@@ -128,7 +125,6 @@ public class Network
             System.out.println("Removal of at least two vertices results in disconnection");
         else
             System.out.println("Removal of any two vertices does not result in disconnection");
-
     }
 
     private void printPath(Iterator<Edge> edgeIterator) {

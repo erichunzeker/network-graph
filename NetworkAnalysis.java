@@ -1,10 +1,7 @@
 import java.util.Scanner;
 
-public class NetworkAnalysis
-{
-
-    public static void main(String[] args)
-    {
+public class NetworkAnalysis {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Network network = new Network(args[0]);
         boolean run = true;
@@ -35,7 +32,6 @@ public class NetworkAnalysis
             else if (input.equalsIgnoreCase("2"))
                 network.isCopper();
 
-
             else if (input.equalsIgnoreCase("3")) {
                 System.out.println("Input Vertex 1");
                 int v1 = scanner.nextInt();
@@ -64,7 +60,5 @@ public class NetworkAnalysis
 
             System.out.println();
         }
-
-
     }
 }
