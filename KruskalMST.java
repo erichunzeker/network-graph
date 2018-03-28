@@ -87,7 +87,7 @@ public class KruskalMST {
             if (!uf.connected(v, w)) { // v-w does not create a cycle
                 uf.union(v, w);  // merge v and w components
                 mst.enqueue(e);  // add edge e to mst
-                weight += e.weight(0);
+                weight += e.weight();
             }
         }
 
@@ -118,7 +118,7 @@ public class KruskalMST {
         // check total weight
         double total = 0.0;
         for (Edge e : edges()) {
-            total += e.weight(0);
+            total += e.weight();
         }
         if (Math.abs(total - weight()) > FLOATING_POINT_EPSILON) {
             System.err.printf("Weight of edges does not equal weight(): %f vs. %f\n", total, weight());
@@ -159,7 +159,7 @@ public class KruskalMST {
             for (Edge f : G.edges()) {
                 int x = f.either(), y = f.other(x);
                 if (!uf.connected(x, y)) {
-                    if (f.weight(0) < e.weight(0)) {
+                    if (f.weight() < e.weight()) {
                         System.err.println("Edge " + f + " violates cut optimality conditions");
                         return false;
                     }

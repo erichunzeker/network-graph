@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Network
@@ -10,7 +9,7 @@ public class Network
     }
 
     public void lowestPath(int v1, int v2) {
-        DijkstraSP dijkstraSP = new DijkstraSP(weightedGraph, v2, 0);
+        DijkstraSP dijkstraSP = new DijkstraSP(weightedGraph, v2);
 
         if(dijkstraSP.hasPathTo(v1)) {
             System.out.print("Path: ");
@@ -20,12 +19,12 @@ public class Network
 
             printPath(edgeIterator);
 
-            Iterable<Edge> bandwithList = dijkstraSP.pathTo(v1);
-            Iterator<Edge> edgeIterator1 = bandwithList.iterator();
+            edgeIterator = edges.iterator();
+
             double max = Double.MAX_VALUE;
 
-            while(edgeIterator1.hasNext()) {
-                Edge e = edgeIterator1.next();
+            while(edgeIterator.hasNext()) {
+                Edge e = edgeIterator.next();
                 if(e.bandwidth() < max)
                     max = e.bandwidth();
             }
@@ -57,7 +56,6 @@ public class Network
                 broken = true;
         }
 
-
         if(broken)
             System.out.println("Network Depends on Copper Wire");
         else
@@ -77,10 +75,12 @@ public class Network
         }
 
         FordFulkerson fordyBoi;
+
         if(v1 < v2)
             fordyBoi = new FordFulkerson(flowNetwork, v1, v2);
         else
             fordyBoi = new FordFulkerson(flowNetwork, v2, v1);
+
         System.out.println(fordyBoi.value() + " Mbps");
 
     }
@@ -101,7 +101,6 @@ public class Network
 
         for(int i = 0; i < weightedGraph.V() - 1; i++) {
             for (int j = i + 1; j < weightedGraph.V(); j++) {
-                //remove i and j
                 EdgeWeightedGraph weightedGraph1 = new EdgeWeightedGraph(weightedGraph.V());
 
                 Iterable<Edge> edges = weightedGraph.edges();

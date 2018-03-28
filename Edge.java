@@ -58,11 +58,8 @@ public class Edge implements Comparable<Edge> {
      *
      * @return the weight of this edge
      */
-    public double weight(int i) {
-        if(i == 0)
-            return weight;
-        else
-            return 1/bandwith;
+    public double weight() {
+        return weight;
     }
     public double bandwidth()
     {

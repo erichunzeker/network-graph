@@ -22,7 +22,6 @@ public class DijkstraSP {
     private double[] distTo;          // distTo[v] = distance  of shortest s->v path
     private Edge[] edgeTo;    // edgeTo[v] = last edge on shortest s->v path
     private IndexMinPQ<Double> pq;    // priority queue of vertices
-    private int search;
 
     /**
      * Computes a shortest paths tree from <tt>s</tt> to every other vertex in
@@ -32,10 +31,9 @@ public class DijkstraSP {
      * @throws IllegalArgumentException if an edge weight is negative
      * @throws IllegalArgumentException unless 0 &le; <tt>s</tt> &le; <tt>V</tt> - 1
      */
-    public DijkstraSP(EdgeWeightedGraph G, int s, int search) {
-        this.search = search;
+    public DijkstraSP(EdgeWeightedGraph G, int s) {
         for (Edge e : G.edges()) {
-            if (e.weight(search) < 0)
+            if (e.weight() < 0)
                 throw new IllegalArgumentException("edge " + e + " has negative weight");
         }
 
@@ -63,8 +61,8 @@ public class DijkstraSP {
         int v = e.either();
         int w = e.other(v);
 
-        if (distTo[w] > distTo[v] + e.weight(search)) {
-            distTo[w] = distTo[v] + e.weight(search);
+        if (distTo[w] > distTo[v] + e.weight()) {
+            distTo[w] = distTo[v] + e.weight();
             edgeTo[w] = e;
             if (pq.contains(w)) pq.decreaseKey(w, distTo[w]);
             else                pq.insert(w, distTo[w]);
@@ -108,13 +106,13 @@ public class DijkstraSP {
 
 
     // check optimality conditions:
-    // (i) for all edges e:            distTo[e.other()] <= distTo[e.either()] + e.weight(search)
-    // (ii) for all edge e on the SPT: distTo[e.other()] == distTo[e.either()] + e.weight(search)
+    // (i) for all edges e:            distTo[e.other()] <= distTo[e.either()] + e.weight()
+    // (ii) for all edge e on the SPT: distTo[e.other()] == distTo[e.either()] + e.weight()
     private boolean check(EdgeWeightedGraph G, int s) {
 
         // check that edge weights are nonnegative
         for (Edge e : G.edges()) {
-            if (e.weight(search) < 0) {
+            if (e.weight() < 0) {
                 System.err.println("negative edge weight detected");
                 return false;
             }
@@ -133,24 +131,24 @@ public class DijkstraSP {
             }
         }
 
-        // check that all edges e = v->w satisfy distTo[w] <= distTo[v] + e.weight(search)
+        // check that all edges e = v->w satisfy distTo[w] <= distTo[v] + e.weight()
         for (int v = 0; v < G.V(); v++) {
             for (Edge e : G.adj(v)) {
                 int w = e.other(v);
-                if (distTo[v] + e.weight(search) < distTo[w]) {
+                if (distTo[v] + e.weight() < distTo[w]) {
                     System.err.println("edge " + e + " not relaxed");
                     return false;
                 }
             }
         }
 
-        // check that all edges e = v->w on SPT satisfy distTo[w] == distTo[v] + e.weight(search)
+        // check that all edges e = v->w on SPT satisfy distTo[w] == distTo[v] + e.weight()
         for (int w = 0; w < G.V(); w++) {
             if (edgeTo[w] == null) continue;
             Edge e = edgeTo[w];
             int v = e.either();
             if (w != e.other(v)) return false;
-            if (distTo[v] + e.weight(search) != distTo[w]) {
+            if (distTo[v] + e.weight() != distTo[w]) {
                 System.err.println("edge " + e + " on shortest path not tight");
                 return false;
             }
