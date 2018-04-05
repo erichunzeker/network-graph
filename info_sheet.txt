@@ -54,7 +54,7 @@ correctly?:
 
 Additional comments to the grader:
 
-Make sure there's no empty line at the end of network_data#.txt files.
+***Make sure there's no empty line at the end of network_data#.txt files.
 
 
 If you get an error along the lines of "Exception in thread "main" java.util.NoSuchElementException: attemps to read an 'int' value from input stream, but there are no more tokens available", try deleting the empty line at the end of the network_data#.txt files.
